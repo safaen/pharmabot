@@ -1,0 +1,7 @@
+
+<sdf version="1.6">
+  <world name="hospital">
+    <include><uri>model://sun</uri></include>
+    <include><uri>model://ground_plane</uri></include>
+  </world>
+</sdf>
