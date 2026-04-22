@@ -1,43 +1,16 @@
 <sdf version="1.6">
   <world name="hospital">
 
-    <!-- lumière -->
-    <include>
-      <uri>model://sun</uri>
-    </include>
+    <include><uri>model://sun</uri></include>
+    <include><uri>model://ground_plane</uri></include>
 
-    <!-- sol -->
-    <include>
-      <uri>model://ground_plane</uri>
-    </include>
-
-    <!-- murs couloir -->
-    <model name="corridor_wall">
-      <static>true</static>
-      <pose>0 0 0 0 0 0</pose>
-      <link name="link">
-        <collision name="collision">
-          <geometry>
-            <box><size>20 0.2 2.5</size></box>
-          </geometry>
-        </collision>
-        <visual name="visual">
-          <geometry>
-            <box><size>20 0.2 2.5</size></box>
-          </geometry>
-        </visual>
-      </link>
-    </model>
-
-    <!-- murs latéraux -->
+    <!-- murs -->
     <model name="wall_left">
       <static>true</static>
       <pose>0 5 0 0 0 0</pose>
       <link name="link">
         <collision name="collision">
-          <geometry>
-            <box><size>20 0.2 2.5</size></box>
-          </geometry>
+          <geometry><box><size>20 0.2 2.5</size></box></geometry>
         </collision>
       </link>
     </model>
@@ -47,22 +20,18 @@
       <pose>0 -5 0 0 0 0</pose>
       <link name="link">
         <collision name="collision">
-          <geometry>
-            <box><size>20 0.2 2.5</size></box>
-          </geometry>
+          <geometry><box><size>20 0.2 2.5</size></box></geometry>
         </collision>
       </link>
     </model>
 
     <!-- salle ICU -->
-    <model name="ICU_room">
+    <model name="ICU">
       <static>true</static>
       <pose>6 2 0 0 0 0</pose>
       <link name="link">
         <collision name="collision">
-          <geometry>
-            <box><size>4 4 2.5</size></box>
-          </geometry>
+          <geometry><box><size>4 4 2.5</size></box></geometry>
         </collision>
       </link>
     </model>
@@ -73,9 +42,7 @@
       <pose>-6 2 0 0 0 0</pose>
       <link name="link">
         <collision name="collision">
-          <geometry>
-            <box><size>4 4 2.5</size></box>
-          </geometry>
+          <geometry><box><size>4 4 2.5</size></box></geometry>
         </collision>
       </link>
     </model>
