@@ -13,7 +13,7 @@ class TaskManager(Node):
         task = {
             "id": int(time.time()),
             "priority": random.choice(["CRITICAL","URGENT","STANDARD"]),
-            "location": random.choice(["ICU","Pharmacy","RoomA"]),
+            "location": random.choice(["ICU","Pharmacy","RoomA","RoomB"]),
             "deadline": time.time() + 10
         }
 
@@ -21,7 +21,7 @@ class TaskManager(Node):
         msg.data = json.dumps(task)
         self.pub.publish(msg)
 
-        self.get_logger().info(f"New Task: {task}")
+        self.get_logger().info(f"📦 Task: {task}")
 
 def main():
     rclpy.init()
