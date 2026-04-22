@@ -9,14 +9,14 @@ class RobotNav(Node):
     def __init__(self):
         super().__init__('robot_nav')
 
-        self.sub = self.create_subscription(
+        self.subscription = self.create_subscription(
             String,
             'scheduled_tasks',
             self.navigate,
             10
         )
 
-        self.pub = self.create_publisher(
+        self.goal_pub = self.create_publisher(
             PoseStamped,
             '/goal_pose',
             10
@@ -25,10 +25,12 @@ class RobotNav(Node):
     def navigate(self, msg):
         task = json.loads(msg.data)
 
+        # 🏥 POSITIONS HÔPITAL
         locations = {
-            "ICU": (6.0, 2.0),
-            "Pharmacy": (-6.0, 2.0),
-            "RoomA": (2.0, -2.0)
+            "ICU": (6.0, 1.5),
+            "Pharmacy": (-6.0, 1.5),
+            "RoomA": (2.0, -2.0),
+            "RoomB": (-2.0, -2.0)
         }
 
         x, y = locations.get(task["location"], (0.0, 0.0))
@@ -40,9 +42,9 @@ class RobotNav(Node):
         goal.pose.position.y = y
         goal.pose.orientation.w = 1.0
 
-        self.pub.publish(goal)
+        self.goal_pub.publish(goal)
 
-        self.get_logger().info(f"🚀 Robot → {task['location']} ({x},{y})")
+        self.get_logger().info(f"🚀 Robot vers {task['location']} → ({x},{y})")
 
 def main():
     rclpy.init()
