@@ -1,4 +1,3 @@
-
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import String
@@ -17,9 +16,12 @@ class TaskManager(Node):
             "location": random.choice(["ICU","Pharmacy","RoomA"]),
             "deadline": time.time() + 10
         }
+
         msg = String()
         msg.data = json.dumps(task)
         self.pub.publish(msg)
+
+        self.get_logger().info(f"New Task: {task}")
 
 def main():
     rclpy.init()
