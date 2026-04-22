@@ -1,16 +1,19 @@
 <sdf version="1.6">
   <world name="hospital">
 
+    <!-- lumière -->
     <include><uri>model://sun</uri></include>
+
+    <!-- sol -->
     <include><uri>model://ground_plane</uri></include>
 
     <!-- COULOIR -->
-    <model name="corridor_floor">
+    <model name="floor">
       <static>true</static>
       <link name="link">
         <visual name="visual">
           <geometry>
-            <box><size>20 6 0.1</size></box>
+            <box><size>30 10 0.1</size></box>
           </geometry>
         </visual>
       </link>
@@ -19,31 +22,31 @@
     <!-- MURS -->
     <model name="wall_left">
       <static>true</static>
-      <pose>0 3 1 0 0 0</pose>
+      <pose>0 5 1 0 0 0</pose>
       <link name="link">
         <collision name="collision">
-          <geometry><box><size>20 0.2 2.5</size></box></geometry>
+          <geometry><box><size>30 0.2 2.5</size></box></geometry>
         </collision>
       </link>
     </model>
 
     <model name="wall_right">
       <static>true</static>
-      <pose>0 -3 1 0 0 0</pose>
+      <pose>0 -5 1 0 0 0</pose>
       <link name="link">
         <collision name="collision">
-          <geometry><box><size>20 0.2 2.5</size></box></geometry>
+          <geometry><box><size>30 0.2 2.5</size></box></geometry>
         </collision>
       </link>
     </model>
 
-    <!-- SALLE ICU -->
+    <!-- ICU ROOM -->
     <model name="ICU_room">
       <static>true</static>
-      <pose>6 1.5 0 0 0 0</pose>
+      <pose>8 2 0 0 0 0</pose>
       <link name="link">
         <collision name="collision">
-          <geometry><box><size>4 3 2.5</size></box></geometry>
+          <geometry><box><size>5 4 2.5</size></box></geometry>
         </collision>
       </link>
     </model>
@@ -51,16 +54,22 @@
     <!-- LIT MÉDICAL -->
     <include>
       <uri>model://hospital_bed</uri>
-      <pose>6 1.5 0 0 0 0</pose>
+      <pose>8 2 0 0 0 0</pose>
+    </include>
+
+    <!-- PATIENT (approximation) -->
+    <include>
+      <uri>model://person_standing</uri>
+      <pose>8 1 0 0 0 0</pose>
     </include>
 
     <!-- PHARMACIE -->
-    <model name="Pharmacy_room">
+    <model name="pharmacy_room">
       <static>true</static>
-      <pose>-6 1.5 0 0 0 0</pose>
+      <pose>-8 2 0 0 0 0</pose>
       <link name="link">
         <collision name="collision">
-          <geometry><box><size>4 3 2.5</size></box></geometry>
+          <geometry><box><size>5 4 2.5</size></box></geometry>
         </collision>
       </link>
     </model>
@@ -68,13 +77,29 @@
     <!-- ÉTAGÈRES -->
     <include>
       <uri>model://table</uri>
-      <pose>-6 1.5 0 0 0 0</pose>
+      <pose>-8 2 0 0 0 0</pose>
     </include>
+
+    <!-- PORTES (simulation simple) -->
+    <model name="door">
+      <static>true</static>
+      <pose>4 0 1 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>1 0.1 2</size></box></geometry>
+        </collision>
+      </link>
+    </model>
 
     <!-- OBSTACLES -->
     <include>
       <uri>model://chair</uri>
       <pose>0 0 0 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://box</uri>
+      <pose>2 -2 0 0 0 0</pose>
     </include>
 
   </world>
