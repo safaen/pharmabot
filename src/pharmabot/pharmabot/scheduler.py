@@ -12,17 +12,14 @@ class Scheduler(Node):
 
     def add(self, msg):
         task = json.loads(msg.data)
-
         priority = {"CRITICAL":0,"URGENT":1,"STANDARD":2}
-        heapq.heappush(self.queue, (priority[task["priority"]], task))
 
+        heapq.heappush(self.queue, (priority[task["priority"]], task))
         _, t = heapq.heappop(self.queue)
 
         out = String()
         out.data = json.dumps(t)
         self.pub.publish(out)
-
-        self.get_logger().info(f"Scheduled: {task}")
 
 def main():
     rclpy.init()
