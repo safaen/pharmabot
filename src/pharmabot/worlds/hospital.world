@@ -4,10 +4,22 @@
     <include><uri>model://sun</uri></include>
     <include><uri>model://ground_plane</uri></include>
 
-    <!-- murs -->
+    <!-- COULOIR -->
+    <model name="corridor_floor">
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box><size>20 6 0.1</size></box>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <!-- MURS -->
     <model name="wall_left">
       <static>true</static>
-      <pose>0 5 0 0 0 0</pose>
+      <pose>0 3 1 0 0 0</pose>
       <link name="link">
         <collision name="collision">
           <geometry><box><size>20 0.2 2.5</size></box></geometry>
@@ -17,7 +29,7 @@
 
     <model name="wall_right">
       <static>true</static>
-      <pose>0 -5 0 0 0 0</pose>
+      <pose>0 -3 1 0 0 0</pose>
       <link name="link">
         <collision name="collision">
           <geometry><box><size>20 0.2 2.5</size></box></geometry>
@@ -25,37 +37,44 @@
       </link>
     </model>
 
-    <!-- salle ICU -->
-    <model name="ICU">
+    <!-- SALLE ICU -->
+    <model name="ICU_room">
       <static>true</static>
-      <pose>6 2 0 0 0 0</pose>
+      <pose>6 1.5 0 0 0 0</pose>
       <link name="link">
         <collision name="collision">
-          <geometry><box><size>4 4 2.5</size></box></geometry>
+          <geometry><box><size>4 3 2.5</size></box></geometry>
         </collision>
       </link>
     </model>
 
-    <!-- pharmacie -->
-    <model name="Pharmacy">
-      <static>true</static>
-      <pose>-6 2 0 0 0 0</pose>
-      <link name="link">
-        <collision name="collision">
-          <geometry><box><size>4 4 2.5</size></box></geometry>
-        </collision>
-      </link>
-    </model>
-
-    <!-- objets -->
+    <!-- LIT MÉDICAL -->
     <include>
-      <uri>model://table</uri>
-      <pose>2 0 0 0 0 0</pose>
+      <uri>model://hospital_bed</uri>
+      <pose>6 1.5 0 0 0 0</pose>
     </include>
 
+    <!-- PHARMACIE -->
+    <model name="Pharmacy_room">
+      <static>true</static>
+      <pose>-6 1.5 0 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>4 3 2.5</size></box></geometry>
+        </collision>
+      </link>
+    </model>
+
+    <!-- ÉTAGÈRES -->
+    <include>
+      <uri>model://table</uri>
+      <pose>-6 1.5 0 0 0 0</pose>
+    </include>
+
+    <!-- OBSTACLES -->
     <include>
       <uri>model://chair</uri>
-      <pose>-2 0 0 0 0 0</pose>
+      <pose>0 0 0 0 0 0</pose>
     </include>
 
   </world>
